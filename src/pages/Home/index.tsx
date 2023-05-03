@@ -11,9 +11,11 @@ import {
 } from './styles'
 
 export function Home() {
+  function handleSubmit(event) {}
+
   return (
     <HomeContainer>
-      <form action="">
+      <form onSubmit={handleSubmit} action="">
         <FormContainer>
           <label htmlFor="task">Vou trabalhar em</label>
           <TaskInput
@@ -50,7 +52,7 @@ export function Home() {
           <span>0</span>
         </CountdownContainer>
 
-        <StartCountdownButton disabled type="submit">
+        <StartCountdownButton disabled={!task} type="submit">
           <Play size={24} />
           Começar
         </StartCountdownButton>
