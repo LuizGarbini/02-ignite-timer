@@ -83,16 +83,16 @@ export function Home() {
   }
 
   function handleInterruptCycle() {
-    setActiveCycleId(null)
-
     setCycles(
       cycles.map((cycle) => {
-        return { ...cycles, interruptedDate: new Date() }
-        else{
+        if (cycle.id === activeCycleId) {
+          return { ...cycle, interruptedDate: new Date() }
+        } else {
           return cycle
         }
       }),
     )
+    setActiveCycleId(null)
   }
 
   const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0
@@ -157,7 +157,7 @@ export function Home() {
         </CountdownContainer>
 
         {activeCycle ? (
-          <StopCountdownButton type="button">
+          <StopCountdownButton onClick={handleInterruptCycle} type="button">
             <HandPalm size={24} />
             Interromper
           </StopCountdownButton>
