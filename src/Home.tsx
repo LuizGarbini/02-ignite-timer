@@ -1,13 +1,25 @@
 import { createContext, useContext } from 'react'
 
 const CyclesContext = createContext({
-  activeCycle: 1,
+  activeCycle: 5,
 })
 
 function NewCycleForm() {
-  const { activeCycle } = useContext(CyclesContext)
+  let { activeCycle } = useContext(CyclesContext)
 
-  return <h1>NewCycleForm: {activeCycle}</h1>
+  return (
+    <h1>
+      NewCycleForm: {activeCycle}
+      <button
+        onClick={() => {
+          activeCycle = 2
+        }}
+      >
+        {' '}
+        Alterar ciclo ativo
+      </button>
+    </h1>
+  )
 }
 
 function Countdown() {
